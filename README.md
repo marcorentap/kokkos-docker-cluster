@@ -1,8 +1,3 @@
-Deploy Docker containers with Kokkos, OpenMP and OpenMPI preinstalled
-as a Docker swarm.
-
----
-
 # Build Images
 
 The Dockerfiles are generated using [HPCCM](https://github.com/NVIDIA/
