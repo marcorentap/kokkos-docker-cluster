@@ -5,7 +5,7 @@ import subprocess
 import json
 
 if (len(sys.argv) < 2):
-    print("Usage: ./gen_hostfile.py [MPI_SLOTS]")
+    print("Usage: ./gen_hostfile.py <MPI_SLOTS>")
     print("e.g. ./gen_hostfile.py 1 > shared/hostfile")
     exit(-1)
 

@@ -48,7 +48,7 @@ docker service scale kokkos_compute=150
 ./gen_hostfile.py 4 > shared/hostfile
 ```
 
-`./gen_hostfile [MPI_SLOTS]` generates a hostfile based on currently running
+`./gen_hostfile <MPI_SLOTS>` generates a hostfile based on currently running
 `kokkos-compute` containers.
 
 # Stop
