@@ -1,8 +1,7 @@
 # Build Images
 
-The Dockerfiles are generated using [HPCCM](https://github.com/NVIDIA/
-hpc-container-maker) from recipes in `recipes/`. The images are based
-on `nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04`;
+The Dockerfiles are generated using [HPCCM](https://github.com/NVIDIA/hpc-container-maker) from recipes in `recipes/`.
+The images are based on `nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04`;
 
 There are two images: `kokkos-compute` and `kokkos-sherlock`. Building
 `kokkos-compute` will also generate ssh keys in `ssh/` which are shared
