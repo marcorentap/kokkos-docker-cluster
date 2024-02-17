@@ -1,0 +1,16 @@
+services:
+    compute:
+        image: kokkos-compute
+        volumes:
+            - ./shared:/shared
+        deploy:
+            replicas: 100
+
+        hostname: "kokkos-compute-{{.Task.Slot}}"
+        networks:
+            - network
+
+networks:
+    network:
+        name: kokkos-overlay
+        external: true
