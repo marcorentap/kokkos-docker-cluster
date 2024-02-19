@@ -20,9 +20,9 @@ Restart docker
 sudo systemctl restart docker
 ```
 
-Make sure you have access to the GPU
+Make sure you have access to the GPU with the default runtime
 ```
-docker run --runtime=nvidia -it nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04 nvidia-smi
+docker run -it nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04 nvidia-smi
 ```
 
 ---
