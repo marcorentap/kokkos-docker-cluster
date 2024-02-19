@@ -1,5 +1,5 @@
 # Requirements
-- [HPCCM](https://github.com/NVIDIA/hpc-container-maker
+- [HPCCM](https://github.com/NVIDIA/hpc-container-maker)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
 
 Then change `/etc/docker/daemon.json` to use nvidia runtime by default
