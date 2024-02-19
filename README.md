@@ -72,13 +72,11 @@ To start a `kokkos-sherlock` container and enter bash, run:
 
 ## Try something
 `/shared/hostfile` is an `mpirun` hostfile with 100 hosts and 4 slot each.
-`/shared/hello.sh` is a test program to print hostname. So you can run
+`/shared/hello.sh` is a test program to print hostname. First make sure that
+all 100 containers has started with `docker service ls` then run:
 ```
 mpirun --np 400 --hostfile /shared/hostfile /shared/hello.sh
 ```
-
-Make sure that there are 100 compute nodes with `docker service ls` so that
-all hosts listed in the hostfile actually exist.
 
 # Scaling
 In case 100 containers is not enough, and you want 150 containers, run:
