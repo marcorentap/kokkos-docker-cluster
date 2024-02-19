@@ -36,7 +36,7 @@ There are two images: `kokkos-compute` and `kokkos-sherlock`. Building
 `kokkos-compute` will also generate ssh keys in `ssh/` which are shared
 by both images. 
 
-You will need to specify the [architecture to build kokkos](https://kokkos.org/kokkos-core-wiki/keywords.html)
+You will need to specify the [architecture to build kokkos](https://kokkos.org/kokkos-core-wiki/keywords.html#keywords-arch)
 by setting the environment variable `KOKKOS_CLUSTER_ARCH=<TARGET_ARCH>`. The scripts will pass `Kokkos_ARCH_<TARGET_ARCH>`
 compile flag to build Kokkos. For example, to build the images for Kokkos_ARCH_VOLTA70, do:
 ```
