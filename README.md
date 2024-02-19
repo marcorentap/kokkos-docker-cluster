@@ -17,7 +17,7 @@ Then change `/etc/docker/daemon.json` to use nvidia runtime by default
 
 Make sure you have access to the GPU
 ```
-docker run --runtime=nvidia -it nvcr.io/nvidia/cuda:12.3.1-base-ubuntu22.04 nvidia-smi
+docker run --runtime=nvidia -it nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04 nvidia-smi
 ```
 
 ---
