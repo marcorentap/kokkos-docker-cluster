@@ -52,7 +52,7 @@ Both images have the user `root` and `compute`.
 while `kokkos-sherlock` containers can be started anytime and launch jobs.
 Additionally, `shared/` is mounted to `/shared` in both images.
 
-First build the network:
+First build the `kokkos-overlay` network:
 ```
 ./make_network.sh
 ```
