@@ -88,8 +88,7 @@ docker service scale kokkos_compute=150
 ```
 
 `./gen_hostfile <MPI_SLOTS>` generates a hostfile based on currently running
-`kokkos-compute` containers. Make sure to check the number of running containers
-with `docker service ls` before running this script.
+`kokkos-compute` containers.
 
 # Stop
 ```
