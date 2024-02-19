@@ -31,6 +31,8 @@ First build the network:
 The file `compose.yaml` is configured to launch 100 `kokkos-compute` containers.
 To deploy it, run:
 ```
+# if you're not already part of a swarm...
+docker swarm init
 docker stack deploy --compose-file=compose.yaml kokkos
 ```
 
