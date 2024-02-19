@@ -64,16 +64,15 @@ To deploy it, run:
 docker swarm init
 docker stack deploy --compose-file=compose.yaml kokkos
 ```
-
-To start a `kokkos-sherlock` container and enter bash, run:
+First make sure that all 100 containers has started with
+`docker service ls`. Then, start a `kokkos-sherlock` container with:
 ```
 ./start_sherlock.sh
 ```
 
 ## Try something
 `/shared/hostfile` is an `mpirun` hostfile with 100 hosts and 4 slot each.
-`/shared/hello.sh` is a test program to print hostname. First make sure that
-all 100 containers has started with `docker service ls` then run:
+`/shared/hello.sh` is a test program to print hostname:
 ```
 mpirun --np 400 --hostfile /shared/hostfile /shared/hello.sh
 ```
