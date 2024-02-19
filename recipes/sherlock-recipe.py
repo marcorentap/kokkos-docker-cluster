@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 import hpccm
+import os
+
+cluster_arch = os.environ["KOKKOS_CLUSTER_ARCH"]
 
 hpccm.config.set_container_format('docker')
 
@@ -7,7 +10,7 @@ Stage0 += baseimage(image='nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04')
 Stage0 += gnu()
 Stage0 += cmake(eula=True)
 Stage0 += openmpi(infiniband=False, cuda=False)
-Stage0 += kokkos(repository="https://github.com/kokkos/kokkos.git", cuda=True)
+Stage0 += kokkos(repository="https://github.com/kokkos/kokkos.git", arch=[cluster_arch], cuda=True)
 
 Stage0 += apt_get(ospackages=["inetutils-traceroute", "ipython3", "iproute2", "net-tools", "iputils-ping", "ssh", "openssh-server"])
 Stage0 += shell(commands=[
