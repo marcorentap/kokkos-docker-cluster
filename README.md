@@ -8,8 +8,9 @@ There are two images: `kokkos-compute` and `kokkos-sherlock`. Building
 by both images. 
 
 You will need to specify the [architecture to build kokkos](https://kokkos.org/kokkos-core-wiki/keywords.html)
-by setting the `KOKKOS_CLUSTER_ARCH` environment variable. For example, to build
-the images for Kokkos_ARCH_VOLTA70, do:
+by setting the `KOKKOS_CLUSTER_ARCH` environment variable as <TARGET_ARCH>
+to set Kokkos_ARCH_<TARGET_ARCH>. For example, to build the images for
+Kokkos_ARCH_VOLTA70, do:
 ```
 export KOKKOS_CLUSTER_ARCH=VOLTA70
 ./make_compute.sh && ./make_sherlock.sh
