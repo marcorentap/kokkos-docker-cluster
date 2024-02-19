@@ -1,6 +1,30 @@
+# Requirements
+- [HPCCM](https://github.com/NVIDIA/hpc-container-maker
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
+
+Then change `/etc/docker/daemon.json` to use nvidia runtime by default
+```
+{
+    "runtimes": {
+        "nvidia": {
+            "args": [],
+            "path": "/usr/bin/nvidia-container-runtime"
+        }
+    },
+    "default-runtime" :  "nvidia",
+}
+```
+
+Make sure you have access to the GPU
+```
+docker run --runtime=nvidia -it nvcr.io/nvidia/cuda:12.3.1-base-ubuntu22.04 nvidia-smi
+```
+
+---
+
 # Build Images
 
-The Dockerfiles are generated using [HPCCM](https://github.com/NVIDIA/hpc-container-maker) from recipes in `recipes/`.
+The Dockerfiles are generated using HPCCM from recipes in `recipes/`.
 The images are based on `nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04`;
 
 There are two images: `kokkos-compute` and `kokkos-sherlock`. Building
