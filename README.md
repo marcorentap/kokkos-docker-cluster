@@ -32,16 +32,15 @@ docker run --runtime=nvidia -it nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04 nvi
 The Dockerfiles are generated using HPCCM from recipes in `recipes/`.
 The images are based on `nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04`;
 
-There are two images: `kokkos-compute` and `kokkos-sherlock`. Building
-`kokkos-compute` will also generate ssh keys in `ssh/` which are shared
-by both images. 
-
-You will need to specify the [architecture to build kokkos](https://kokkos.org/kokkos-core-wiki/keywords.html#keywords-arch)
-by setting the environment variable `KOKKOS_CLUSTER_ARCH=<TARGET_ARCH>`. The scripts will pass `Kokkos_ARCH_<TARGET_ARCH>`
-compile flag to build Kokkos. For example, to build the images for Kokkos_ARCH_VOLTA70, do:
+There are two images: `kokkos-compute` and `kokkos-sherlock` that share ssh
+keys in `ssh/`. You will need to specify the
+[architecture to build kokkos](https://kokkos.org/kokkos-core-wiki/keywords.html#keywords-arch)
+by setting the environment variable `KOKKOS_CLUSTER_ARCH=<TARGET_ARCH>`. The
+scripts will pass `Kokkos_ARCH_<TARGET_ARCH>` compile flag to build Kokkos. For
+example, to generate ssh keys and build the images for Kokkos_ARCH_VOLTA70, do:
 ```
 export KOKKOS_CLUSTER_ARCH=VOLTA70
-./make_compute.sh && ./make_sherlock.sh
+./make_keys && ./make_compute.sh && ./make_sherlock.sh
 ```
 
 Both images have the user `root` and `compute`.
