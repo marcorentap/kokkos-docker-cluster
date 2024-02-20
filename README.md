@@ -53,14 +53,14 @@ Additionally, `shared/` is mounted to `/shared` in both images.
 
 First build the `kokkos-overlay` network:
 ```
+# if you're not already part of a swarm...
+docker swarm init
 ./make_network.sh
 ```
 
 The file `compose.yaml` is configured to launch 100 `kokkos-compute` containers.
 To deploy it, run:
 ```
-# if you're not already part of a swarm...
-docker swarm init
 docker stack deploy --compose-file=compose.yaml kokkos
 ```
 
