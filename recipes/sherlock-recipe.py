@@ -3,14 +3,37 @@ import hpccm
 import os
 
 cluster_arch = os.environ["KOKKOS_CLUSTER_ARCH"]
+cuda_archs = [
+    "HOPPER90",
+    "ADA89",
+    "AMPERE86",
+    "AMPERE80",
+    "TURING75",
+    "VOLTA72",
+    "VOLTA70",
+    "PASCAL61",
+    "PASCAL60",
+    "MAXWELL53",
+    "MAXWELL52",
+    "MAXWELL50",
+    "KEPLER37",
+    "KEPLER35",
+    "KEPLER32",
+    "KEPLER30",
+]
+
+image = ''
+if cluster_arch in cuda_archs:
+    image = 'nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04'
+else:
+    image = 'ubuntu:22.04'
 
 hpccm.config.set_container_format('docker')
-
-Stage0 += baseimage(image='nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04')
+Stage0 += baseimage(image=image)
 Stage0 += gnu()
 Stage0 += cmake(eula=True)
-Stage0 += openmpi(infiniband=False, cuda=False)
-Stage0 += kokkos(repository="https://github.com/kokkos/kokkos.git", arch=[cluster_arch], cuda=True)
+Stage0 += openmpi(infiniband=False, cuda=cluster_arch in cuda_archs)
+Stage0 += kokkos(repository="https://github.com/kokkos/kokkos.git", arch=[cluster_arch], cuda=cluster_arch in cuda_archs)
 
 Stage0 += apt_get(ospackages=["inetutils-traceroute", "ipython3", "iproute2", "net-tools", "iputils-ping", "ssh", "openssh-server"])
 Stage0 += shell(commands=[
