@@ -38,7 +38,8 @@ Stage0 += apt_get(ospackages=["net-tools", "iputils-ping", "ssh", "openssh-serve
 Stage0 += shell(commands=[
                 "useradd -m -s $(which bash) compute",
                 "usermod -aG sudo compute",
-                "echo 'compute:kokkoscompute' | chpasswd"
+                "echo 'compute:kokkoscompute' | chpasswd",
+                "echo 'root:kokkosroot' | chpasswd"
                 ])
 
 Stage0 += copy(_chown='root',
