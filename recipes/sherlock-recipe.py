@@ -25,7 +25,7 @@ cuda_archs = [
 image = ''
 if cluster_arch in cuda_archs:
     image = 'nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04'
-else
+else:
     image = 'ubuntu:22.04'
 
 hpccm.config.set_container_format('docker')
