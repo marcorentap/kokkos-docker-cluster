@@ -26,8 +26,9 @@ docker run -it nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04 nvidia-smi
 ```
 
 ---
+# Usage
 
-# Building Images
+## Building Images
 
 Dockerfiles are generated using HPCCM from recipes located in `recipes/`. These images are based on `nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04`.
 
@@ -39,7 +40,7 @@ export KOKKOS_CLUSTER_ARCH=VOLTA70
 
 Both images contain users `root` with password `kokkosroot` and `compute` with password `kokkoscompute`.
 
-# Starting Containers
+## Starting Containers
 
 `kokkos-compute` containers are intended to run continuously in the background, while `kokkos-sherlock` containers can be started as needed to launch jobs. Additionally, `shared/` is mounted to `/shared` in both images.
 
@@ -66,7 +67,7 @@ Ensure that all 100 containers have started with `docker service ls`. Then, star
 mpirun --np 400 --hostfile /shared/hostfile /shared/hello.sh
 ```
 
-# Scaling
+## Scaling
 If 100 containers are insufficient and you require 150 containers, execute:
 ```
 docker service scale kokkos_compute=150
@@ -74,7 +75,7 @@ docker service scale kokkos_compute=150
 ```
 `./gen_hostfile <MPI_SLOTS>` generates a hostfile based on currently running `kokkos-compute` containers.
 
-# Stopping
+## Stopping
 To stop the setup, execute:
 ```
 docker stack rm kokkos
