@@ -5,7 +5,8 @@ services:
             - ./shared:/shared
         deploy:
             replicas: 100
-
+        cap_add:
+          - PERFMON
         hostname: "kokkos-compute-{{.Task.Slot}}"
         networks:
             - network
