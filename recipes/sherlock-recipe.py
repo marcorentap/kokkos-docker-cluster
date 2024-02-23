@@ -40,7 +40,8 @@ Stage0 += shell(commands=[
                 "useradd -m -s $(which bash) compute",
                 "usermod -aG sudo compute",
                 "echo 'compute:kokkoscompute' | chpasswd",
-                "echo 'root:kokkosroot' | chpasswd"
+                "echo 'root:kokkosroot' | chpasswd",
+                "sysctl -w kernel.perf_event_paranoid=0",
                 ])
 
 Stage0 += copy(_chown='root',
