@@ -3,7 +3,9 @@ Ensure you have the following tools installed:
 - [HPCCM](https://github.com/NVIDIA/hpc-container-maker)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
 
-Modify `/etc/docker/daemon.json` to set the NVIDIA runtime as the default:
+
+## CUDA
+If you need CUDA, first modify `/etc/docker/daemon.json` to set the NVIDIA runtime as the default:
 ```
 {
     "runtimes": {
