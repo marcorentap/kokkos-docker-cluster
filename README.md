@@ -1,11 +1,12 @@
 # Prerequisites
-Ensure you have the following tools installed:
-- [HPCCM](https://github.com/NVIDIA/hpc-container-maker)
-- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html)
+Ensure you have [HPCCM](https://github.com/NVIDIA/hpc-container-maker) installed.
 
 
 ## CUDA
-If you need CUDA, first modify `/etc/docker/daemon.json` to set the NVIDIA runtime as the default:
+If you need CUDA, install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/index.html).
+
+Then modify `/etc/docker/daemon.json` to set NVIDIA runtime as the default:
+
 ```
 {
     "runtimes": {
@@ -22,7 +23,7 @@ Then restart Docker:
 sudo systemctl restart docker
 ```
 
-Ensure GPU access with the default runtime:
+Ensure you have GPU access with the default runtime:
 ```
 docker run -it nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04 nvidia-smi
 ```
