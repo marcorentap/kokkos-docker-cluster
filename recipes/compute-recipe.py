@@ -24,6 +24,7 @@ cuda_archs = [
 
 if cluster_arch in cuda_archs:
     image = 'nvcr.io/nvidia/cuda:12.3.1-devel-ubuntu22.04'
+    # image = 'nvcr.io/nvidia/nvhpc:24.1-devel-cuda_multi-ubuntu22.04'
 else:
     image = 'ubuntu:22.04'
 
@@ -31,7 +32,8 @@ hpccm.config.set_container_format('docker')
 Stage0 += baseimage(image=image)
 Stage0 += gnu()
 Stage0 += cmake(eula=True)
-Stage0 += openmpi(infiniband=False, cuda=cluster_arch in cuda_archs)
+Stage0 += nvhpc(eula=True, extended_environment=True)
+# Stage0 += openmpi(infiniband=False, cuda=cluster_arch in cuda_archs)
 Stage0 += kokkos(repository="https://github.com/kokkos/kokkos.git", arch=[cluster_arch], cuda=cluster_arch in cuda_archs)
 
 Stage0 += apt_get(ospackages=["net-tools", "iputils-ping", "ssh", "openssh-server"])
