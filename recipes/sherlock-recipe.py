@@ -33,6 +33,8 @@ Stage0 += baseimage(image=image)
 Stage0 += gnu()
 Stage0 += cmake(eula=True)
 Stage0 += openmpi(infiniband=False, cuda=cluster_arch in cuda_archs)
+if cluster_arch in cuda_archs:
+    Stage0 += nvhpc(eula=True, extended_environment=True)
 Stage0 += kokkos(repository="https://github.com/kokkos/kokkos.git", arch=[cluster_arch], cuda=cluster_arch in cuda_archs)
 
 Stage0 += apt_get(ospackages=["inetutils-traceroute", "ipython3", "iproute2", "net-tools", "iputils-ping", "ssh", "openssh-server"])
